@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=UTF-8>
+<meta name=viewport content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<style>*{margin:0;padding:0;box-sizing:border-box}body{min-height:100vh;background:radial-gradient(circle at 15% 20%,rgba(212,175,55,0.10),transparent 30%),radial-gradient(circle at 85% 80%,rgba(212,175,55,0.06),transparent 30%),linear-gradient(135deg,#080808,#151515,#080808);font-family:Arial,sans-serif;color:white}h1.page-title{text-align:center;margin-top:50px;font-size:60px;color:#d4af37;font-family:Georgia,serif;letter-spacing:1.5px}#single-product-card{min-height:80vh;width:110vh;max-width:92vw;background:linear-gradient(145deg,#1a1a1a,#0f0f0f);justify-self:center;align-content:center;margin:50px auto;border:1px solid rgba(212,175,55,0.35);border-radius:22px;box-shadow:0 15px 45px rgba(0,0,0,0.45);padding:20px}.single-product-info{min-height:70%;min-width:70%;display:flex;gap:30px;flex-wrap:wrap}.image-portion{height:90%;width:45%;margin-left:10px;border-radius:16px;overflow:hidden;border:1px solid rgba(212,175,55,0.25);background:linear-gradient(135deg,#2b2b2b,#181818)}.image-portion img{height:100%;width:100%;object-fit:cover;display:block}.details-portion{flex:1;min-width:280px;display:flex;flex-direction:column;gap:14px;padding:10px 15px 10px 0}#bname{color:#d4af37;font-size:13px;text-transform:uppercase;letter-spacing:2.5px;font-weight:700}#pname{font-size:32px;font-weight:700;color:#fff;font-family:Georgia,serif}#pdescription{color:#b8b8b8;font-size:15px;line-height:1.8}.product-stock{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px 0;border-top:1px solid rgba(212,175,55,0.2);border-bottom:1px solid rgba(212,175,55,0.2)}#stock-available{font-size:13px;font-weight:700;letter-spacing:1px;padding:5px 12px;border-radius:20px;width:fit-content}#stock-available.in-stock{color:#3ddc84;background:rgba(61,220,132,0.12);border:1px solid rgba(61,220,132,0.35)}#stock-available.out-stock{color:#ff5c5c;background:rgba(255,92,92,0.12);border:1px solid rgba(255,92,92,0.35)}#p-price{color:#d4af37;font-size:28px;font-weight:700}#quantity{color:#888;font-size:13px;font-weight:400}select{margin-top:6px;background:#1a1a1a;color:white;border:1px solid rgba(212,175,55,0.4);border-radius:8px;padding:8px 14px;font-size:14px;cursor:pointer}select:focus{outline:0;border-color:#d4af37}.action-buttons{display:flex;gap:14px;margin-top:10px}.action-buttons a{text-decoration:none;text-align:center;padding:12px 22px;border-radius:30px;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap}a.add-to-cart{background:linear-gradient(135deg,#D4AF37,#F5D77A);color:#111;border:0}a.wishlist{background:transparent;color:#d4af37;border:1px solid rgba(212,175,55,0.5)}</style>
+<body>
+<h1 class=page-title>DETAILS</h1>
+<div id=single-product-card>
+<div class=single-product-info>
+<div class=image-portion>
+<img id=p-image src alt>
+</div>
+<div class=details-portion>
+<div class=details>
+<p id=bname></p>
+<h2 id=pname></h2>
+<p id=pdescription></p>
+</div>
+<div class=product-stock>
+<p id=stock-available></p>
+<h3 id=p-price></h3>
+<h6 id=quantity></h6>
+<select name=qty id=qty-select>
+<option value=1>1</option>
+<option value=2>2</option>
+<option value=3>3</option>
+<option value=4>4</option>
+<option value=5>5</option>
+<option value=6>6</option>
+<option value=7>7</option>
+<option value=8>8</option>
+<option value=9>9</option>
+<option value=10>10</option>
+</select>
+</div>
+<div class=action-buttons>
+<a href class=add-to-cart>Add to cart</a>
+<a href class=wishlist>Wishlist</a>
+</div>
+</div>
+</div>
+</div>
+<script>const param=new URLSearchParams(window.location.search)
+let brand=param.get('brand')
+let name=param.get('name')
+let price=param.get('price')
+let category=param.get('category')
+let description=param.get('desc')
+let image=param.get('image').toString()
+let stock=param.get('stock')
+let quantity=param.get('quantity')
+document.getElementById('bname').innerText=brand
+document.getElementById('pname').innerText=name
+document.getElementById('pdescription').innerText=description
+document.getElementById('stock-available').innerText=stock==='true'?`In Stock(${quantity}available)`:'Out of Stock'
+document.getElementById('p-price').innerText='Rs. '+Number(price).toLocaleString()
+document.getElementById('quantity').innerText=quantity+' left'
+console.log("----->",image)
+document.getElementById('p-image').src=image</script>
+</body>
+</html>
